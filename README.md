@@ -4,7 +4,9 @@ To run:
 3. Serve the backend application via `php artisan serve` in the root directory
 4. Serve this application via `ng serve` in the root directory 
 5. Paste the following in a fresh `environments/environment.ts` file:
-6. ts```export const environment = {
+
+```
+export const environment = {
   production: false,
   API_IMAGES_RESOURCE: 'http://localhost:8000/api/images'
 };
