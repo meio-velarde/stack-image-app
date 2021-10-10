@@ -22,6 +22,7 @@ export class AppComponent {
   index = 0
   rawImageList: ImageDictionary = {}
   permutedImageList: string[][] = []
+  generatedImages: string = ''
 
   constructor(private httpClient: HttpClient) {
   }
@@ -58,17 +59,17 @@ export class AppComponent {
   }
 
   private handleGetCompleteCb = (getResult: ImageAccessInformation[]) => {
-    const items = getResult.filter(result => Number(result.index) < 3)
     const imageDictionary = this.generateImageDictionary(getResult)
 
     this.rawImageList = imageDictionary
 
-    const toPermute = this.generateCartesianInput(items)
+    const toPermute = this.generateCartesianInput(getResult)
     const permutedList = this.cartesian.apply(null, toPermute as any) as string[][]
     this.permutedImageList = permutedList
 
     console.log(permutedList)
     //TODO: Map list to their own layers
+    this.generatedImages = 'Image mapping and div stacking has not been implemented yet! Please see console for generated combinations.'
   }
 
   private generateCartesianInput(getResult: ImageAccessInformation[]): Array<string[]> {
